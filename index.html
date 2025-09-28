@@ -15,20 +15,28 @@
             overflow-x: hidden;
         }
 
-        /* Gradasi tombol */
+        /* Gradasi tombol sesuai tema navbar */
         .btn-gradient {
-            background-image: linear-gradient(to right, #6366F1, #8B5CF6);
+            background-image: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             transition: all 0.3s ease-in-out;
         }
         .btn-gradient:hover {
-            background-image: linear-gradient(to right, #4F46E5, #7C3AED);
+            background-image: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
         }
         .btn-gradient:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
+        }
+
+        /* Focus ring untuk form elements dengan warna biru navbar */
+        .form-input:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: #3b82f6;
+            border-color: #3b82f6;
         }
 
         /* Animasi fade-in untuk tampilan awal */
@@ -63,33 +71,71 @@
     </style>
 </head>
 <body>
-    <!-- Header (sama seperti kode asli Anda) -->
+    <!-- Header dengan logo dan navigasi -->
     <header class="bg-white shadow-sm">
-        <div class="bg-red-500 text-white text-xs py-1 px-4 flex justify-between items-center">
-            <span class="hidden sm:inline">PT Perta Arun Gas | Instagram: @pagpertaarungas | Twitter: @pagpertaarungas</span>
-            <div class="flex items-center space-x-2">
-                <img src="https://flagcdn.com/id.svg" alt="Indonesia Flag" class="h-3 w-auto">
-                <span>Indonesia</span>
+        <!-- Top bar hitam dengan gradasi merah -->
+        <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-red-500 text-white text-xs py-2 px-4">
+            <div class="flex justify-between items-center max-w-7xl mx-auto">
+                <span class="hidden sm:inline">PT Perta Arun Gas | Instagram: @pagpertaarungas | Twitter: @pagpertaarungas</span>
+                <div class="flex items-center space-x-2">
+                    <img src="https://flagcdn.com/id.svg" alt="Indonesia Flag" class="h-3 w-auto">
+                    <span class="font-medium">Indonesia</span>
+                </div>
             </div>
         </div>
-        <div class="bg-[#1e3a8a] text-white p-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="https://placehold.co/50x50/white/black?text=Logo" alt="Logo" class="h-10 w-10">
-                <span class="font-bold text-lg hidden md:block">PERTAMINA <span class="logo-text">PERTA ARUN GAS</span></span>
+        
+        <!-- Navigasi utama dengan gradasi biru -->
+        <div style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);" class="text-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center py-3">
+                    <!-- Logo dan Brand -->
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-white p-2 rounded-lg">
+                            <img 
+                                src="logo.jpg" 
+                                alt="Logo Pertamina Perta Arun Gas" 
+                                class="h-8 w-8 object-contain"
+                            >
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-wide leading-tight text-white">PERTAMINA</span>
+                            <span class="font-bold text-sm text-red-300 leading-tight">PERTA ARUN GAS</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="hidden lg:flex items-center space-x-8">
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Tentang Kami</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Bisnis Kami</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Hubungan Investor</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Keberlanjutan</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Media & Informasi</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Karir</a>
+                        <a href="#" class="text-sm font-medium hover:text-red-300 transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-red-300">Kontak Kami</a>
+                    </nav>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="lg:hidden">
+                        <button id="menu-btn" class="text-white hover:text-red-300 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <nav class="hidden md:flex space-x-6 text-sm">
-                <a href="#" class="nav-link hover:text-gray-300">Tentang Kami</a>
-                <a href="#" class="nav-link hover:text-gray-300">Bisnis Kami</a>
-                <a href="#" class="nav-link hover:text-gray-300">Hubungan Investor</a>
-                <a href="#" class="nav-link hover:text-gray-300">Keberlanjutan</a>
-                <a href="#" class="nav-link hover:text-gray-300">Media & Informasi</a>
-                <a href="#" class="nav-link hover:text-gray-300">Karir</a>
-                <a href="#" class="nav-link hover:text-gray-300">Kontak Kami</a>
-            </nav>
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            
+            <!-- Mobile Navigation Menu (hidden by default) -->
+            <div id="mobile-menu" class="lg:hidden hidden bg-blue-800 bg-opacity-90">
+                <div class="px-4 py-2 space-y-1">
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Tentang Kami</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Bisnis Kami</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Hubungan Investor</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Keberlanjutan</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Media & Informasi</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Karir</a>
+                    <a href="#" class="block px-3 py-2 text-sm font-medium hover:text-red-300 hover:bg-blue-700 rounded transition-all duration-200">Kontak Kami</a>
+                </div>
             </div>
         </div>
     </header>
@@ -99,7 +145,7 @@
         <div class="container mx-auto max-w-2xl bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100 animate-fadeIn">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-1">Formulir Feedback Masyarakat</h2>
-                <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full"></div>
+                <div class="h-1 w-20 bg-gradient-to-r from-blue-600 to-blue-500 mx-auto rounded-full"></div>
                 <p class="text-gray-500 mt-2">Sampaikan aspirasi Anda di sini. (Konfirmasi akan dikirim via Email)</p>
             </div>
             
@@ -107,7 +153,7 @@
                 <!-- 1. Nama Lengkap (Full Width) -->
                 <div>
                     <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" placeholder="Nama Anda" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                    <input type="text" id="nama" name="nama" placeholder="Nama Anda" required class="form-input w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 text-sm">
                 </div>
                 
                 <!-- 2. Kontainer WhatsApp & Email (2 Kolom di Desktop) -->
@@ -115,20 +161,20 @@
                     <!-- Nomor WhatsApp -->
                     <div>
                         <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 081234567890" required pattern="^08[1-9][0-9]{8,11}$" title="Format: 08 diikuti 10-13 digit total (contoh: 081234567890)" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 081234567890" required pattern="^08[1-9][0-9]{8,11}$" title="Format: 08 diikuti 10-13 digit total (contoh: 081234567890)" class="form-input w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 text-sm">
                     </div>
                     
                     <!-- Alamat Email -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email (untuk Konfirmasi)</label>
-                        <input type="email" id="email" name="email" placeholder="contoh@domain.com" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                        <input type="email" id="email" name="email" placeholder="contoh@domain.com" required class="form-input w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 text-sm">
                     </div>
                 </div>
                 
                 <!-- 3. Kategori Feedback (Full Width) -->
                 <div>
                     <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori Feedback</label>
-                    <select id="kategori" name="kategori" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                    <select id="kategori" name="kategori" required class="form-input w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 text-sm">
                         <option value="" disabled selected>Pilih kategori...</option>
                         <option value="Lingkungan">Lingkungan</option>
                         <option value="Infrastruktur">Infrastruktur</option>
@@ -140,10 +186,10 @@
                 <!-- 4. Isi Pesan (Full Width) -->
                 <div>
                     <label for="pesan" class="block text-sm font-medium text-gray-700 mb-1">Isi Pesan</label>
-                    <textarea id="pesan" name="pesan" rows="4" placeholder="Jelaskan feedback Anda secara rinci" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 resize-none transition-colors duration-200 text-sm"></textarea>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Jelaskan feedback Anda secara rinci" required class="form-input w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-colors duration-200 text-sm"></textarea>
                 </div>
                 
-                <button type="submit" id="submitBtn" class="btn-gradient w-full text-white font-semibold py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <button type="submit" id="submitBtn" class="btn-gradient w-full text-white font-semibold py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">
                     Kirim Feedback
                 </button>
             </form>
@@ -154,6 +200,21 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle functionality
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+            
             const form = document.getElementById('feedbackForm');
             const statusMessage = document.getElementById('statusMessage');
             const submitBtn = document.getElementById('submitBtn');
@@ -209,8 +270,8 @@
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                 </svg>
                                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Feedback Terkirim Sukses!</h2>
-                                <p class="text-gray-500">Terima kasih atas kontribusi Anda. Konfirmasi telah dikirimkan ke alamat email Anda: <span class="font-semibold text-indigo-600">${data.email}</span></p>
-                                <button onclick="window.location.reload()" class="mt-6 px-6 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition duration-200">
+                                <p class="text-gray-500">Terima kasih atas kontribusi Anda. Konfirmasi telah dikirimkan ke alamat email Anda: <span class="font-semibold text-blue-600">${data.email}</span></p>
+                                <button onclick="window.location.reload()" class="mt-6 px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-200">
                                     Kirim Feedback Baru
                                 </button>
                             </div>
