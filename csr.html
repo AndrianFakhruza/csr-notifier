@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Feedback Masyarakat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Gradasi tombol */
+        .btn-gradient {
+            background-image: linear-gradient(to right, #6366F1, #8B5CF6);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-gradient:hover {
+            background-image: linear-gradient(to right, #4F46E5, #7C3AED);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+        .btn-gradient:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Animasi fade-in untuk tampilan awal */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Spinner untuk loading */
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #ffffff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            color: #EF4444; /* red-500 */
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (sama seperti kode asli Anda) -->
+    <header class="bg-white shadow-sm">
+        <div class="bg-red-500 text-white text-xs py-1 px-4 flex justify-between items-center">
+            <span class="hidden sm:inline">PT Perta Arun Gas | Instagram: @pagpertaarungas | Twitter: @pagpertaarungas</span>
+            <div class="flex items-center space-x-2">
+                <img src="https://flagcdn.com/id.svg" alt="Indonesia Flag" class="h-3 w-auto">
+                <span>Indonesia</span>
+            </div>
+        </div>
+        <div class="bg-[#1e3a8a] text-white p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/50x50/white/black?text=Logo" alt="Logo" class="h-10 w-10">
+                <span class="font-bold text-lg hidden md:block">PERTAMINA <span class="logo-text">PERTA ARUN GAS</span></span>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm">
+                <a href="#" class="nav-link hover:text-gray-300">Tentang Kami</a>
+                <a href="#" class="nav-link hover:text-gray-300">Bisnis Kami</a>
+                <a href="#" class="nav-link hover:text-gray-300">Hubungan Investor</a>
+                <a href="#" class="nav-link hover:text-gray-300">Keberlanjutan</a>
+                <a href="#" class="nav-link hover:text-gray-300">Media & Informasi</a>
+                <a href="#" class="nav-link hover:text-gray-300">Karir</a>
+                <a href="#" class="nav-link hover:text-gray-300">Kontak Kami</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section with Feedback Form -->
+    <main class="bg-gray-50 py-16 px-4">
+        <div class="container mx-auto max-w-2xl bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100 animate-fadeIn">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-1">Formulir Feedback Masyarakat</h2>
+                <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full"></div>
+                <p class="text-gray-500 mt-2">Sampaikan aspirasi Anda di sini. (Konfirmasi akan dikirim via Email)</p>
+            </div>
+            
+            <form id="feedbackForm" class="space-y-6">
+                <!-- 1. Nama Lengkap (Full Width) -->
+                <div>
+                    <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" placeholder="Nama Anda" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                </div>
+                
+                <!-- 2. Kontainer WhatsApp & Email (2 Kolom di Desktop) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Nomor WhatsApp -->
+                    <div>
+                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 081234567890" required pattern="^08[1-9][0-9]{8,11}$" title="Format: 08 diikuti 10-13 digit total (contoh: 081234567890)" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                    </div>
+                    
+                    <!-- Alamat Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email (untuk Konfirmasi)</label>
+                        <input type="email" id="email" name="email" placeholder="contoh@domain.com" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                    </div>
+                </div>
+                
+                <!-- 3. Kategori Feedback (Full Width) -->
+                <div>
+                    <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori Feedback</label>
+                    <select id="kategori" name="kategori" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-colors duration-200 text-sm">
+                        <option value="" disabled selected>Pilih kategori...</option>
+                        <option value="Lingkungan">Lingkungan</option>
+                        <option value="Infrastruktur">Infrastruktur</option>
+                        <option value="Sosial">Sosial</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                
+                <!-- 4. Isi Pesan (Full Width) -->
+                <div>
+                    <label for="pesan" class="block text-sm font-medium text-gray-700 mb-1">Isi Pesan</label>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Jelaskan feedback Anda secara rinci" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 resize-none transition-colors duration-200 text-sm"></textarea>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="btn-gradient w-full text-white font-semibold py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Kirim Feedback
+                </button>
+            </form>
+            
+            <div id="statusMessage" class="mt-6 text-center text-sm font-medium hidden"></div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('feedbackForm');
+            const statusMessage = document.getElementById('statusMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const formContainer = document.querySelector('.container');
+
+            // URL Webhook (Ganti dengan URL n8n yang sebenarnya setelah testing)
+            const webhookUrl = 'http://localhost:8080/webhook-test/csr-notifier';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Validasi tambahan untuk nomor WA (format 08..)
+                const whatsapp = document.getElementById('whatsapp').value;
+                const waRegex = /^08[1-9][0-9]{8,11}$/;
+                if (!waRegex.test(whatsapp)) {
+                    statusMessage.classList.remove('hidden');
+                    statusMessage.innerHTML = '<p class="text-red-600 font-semibold">Nomor WhatsApp tidak valid. Gunakan format 08.. (contoh: 081234567890, total 10-13 digit).</p>';
+                    return;
+                }
+                
+                // Tampilkan loading spinner di button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner"></span>Mengirim feedback...';
+                statusMessage.classList.remove('hidden');
+                statusMessage.innerHTML = '<p class="text-gray-500">Memproses data...</p>';
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    let responseData;
+                    try {
+                        // Coba parse JSON
+                        responseData = await response.json();
+                    } catch (parseError) {
+                        // Fallback jika respons bukan JSON
+                        responseData = { error: 'Respons server tidak valid atau kosong' };
+                    }
+
+                    if (response.ok) {
+                        // Sukses: Ganti form dengan pesan sukses
+                        formContainer.innerHTML = `
+                            <div class="flex flex-col items-center justify-center p-8 text-center animate-fadeIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-green-500 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-2">Feedback Terkirim Sukses!</h2>
+                                <p class="text-gray-500">Terima kasih atas kontribusi Anda. Konfirmasi telah dikirimkan ke alamat email Anda: <span class="font-semibold text-indigo-600">${data.email}</span></p>
+                                <button onclick="window.location.reload()" class="mt-6 px-6 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition duration-200">
+                                    Kirim Feedback Baru
+                                </button>
+                            </div>
+                        `;
+                    } else {
+                        // Error dari server: Parse dan tampilkan detail
+                        const errorMsg = responseData.error || `Server error: ${response.status} (${response.statusText})`;
+                        throw new Error(errorMsg);
+                    }
+                } catch (error) {
+                    console.error('Error saat mengirim feedback:', error);
+                    statusMessage.innerHTML = `<p class="text-red-600 font-semibold">Gagal mengirim: ${error.message}. Silakan coba lagi atau hubungi admin.</p>`;
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Kirim Feedback';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
