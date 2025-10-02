@@ -34,8 +34,6 @@
         /* Focus ring untuk form elements dengan warna biru navbar */
         .form-input:focus {
             outline: none;
-            ring: 2px;
-            ring-color: #3b82f6;
             border-color: #3b82f6;
         }
 
@@ -221,7 +219,7 @@
             const formContainer = document.querySelector('.container');
 
             // URL Webhook (Ganti dengan URL n8n yang sebenarnya setelah testing)
-            const webhookUrl = 'http://localhost:8080/webhook-test/csr-notifier';
+            const webhookUrl = 'http://localhost:5678/webhook-test/csr-notifier';
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
